@@ -1,0 +1,51 @@
+<li
+  class="grid grid-cols-[auto_4fr_1fr] gap-x-2 sm:gap-x-4 md:gap-x-6 place-content-between p-5 bg-white border-[1px] rounded-lg"
+>
+  <div class="grid place-items-start">
+    <img
+      [ngClass]="item().types[0].type.name"
+      class="h-20 w-20 p-2 rounded"
+      ngSrc="{{ item().imageUrl }}"
+      [style.viewTransitionName]="item().name"
+      width="256"
+      height="256"
+      alt=""
+      priority
+    />
+  </div>
+
+  <div class="grid grid-rows-2 gap-2 place-content-start">
+    <p class="text-base sm:text-lg font-semibold leading-6 text-gray-900">
+      {{ item().name }}
+    </p>
+    <div
+      class="scrollbar-hide max-h-6 overflow-x-auto overflow-y-hidden grid grid-flow-col auto-cols-max gap-2"
+    >
+      @for (type of item().types; track $index) {
+      <p
+        [ngClass]="type.type.name"
+        class="text-xs font-medium me-2 px-2.5 py-0.5 rounded"
+      >
+        {{ type.type.name }}
+      </p>
+      }
+    </div>
+  </div>
+
+  <div class="grid justify-items-end content-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m8.25 4.5 7.5 7.5-7.5 7.5"
+      />
+    </svg>
+  </div>
+</li>

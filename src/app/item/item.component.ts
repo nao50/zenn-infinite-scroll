@@ -1,4 +1,4 @@
-import { Component, effect, input, output, computed, linkedSignal } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import { NgOptimizedImage, CommonModule  } from '@angular/common';
 import { ItemDetail } from '../interface/item';
 
@@ -17,5 +17,4 @@ export class ItemComponent {
       this.loaded.emit(this.item().id);
     });
   }
-
 }

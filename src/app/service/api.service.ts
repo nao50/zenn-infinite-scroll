@@ -17,16 +17,22 @@ export class ApiService {
   scrollY = signal(0);
   lastIndex = signal(0);
   next = signal('');
-  // id = signal(1);
-  // item2: ResourceRef<ItemDetail> = resource({
-  //   request: () => ({id: this.id()}),
-  //   loader: async ({ request, abortSignal }): Promise<ItemDetail> => {
-  //     const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${request.id}`, {
-  //       signal: abortSignal,
-  //     });
-  //     return resp.json();
-  //   },
-  // });
+  id = signal(1);
+  itemResource: ResourceRef<ItemDetail> = resource({
+    request: () => ({id: this.id()}),
+    loader: async ({ request, abortSignal }): Promise<ItemDetail> => {
+      const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${request.id}`, {
+        signal: abortSignal,
+      });
+      return resp.json();
+    // loader: ({ request, abortSignal }): Promise<ItemDetail> => {
+    //   return fetch(`https://pokeapi.co/api/v2/pokemon/${request.id}`, {
+    //     signal: abortSignal
+    //   }).then((res) => {
+    //     return res.json()
+    //   });
+    },
+  });
 
   constructor() { }
 
